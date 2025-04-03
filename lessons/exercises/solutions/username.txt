@@ -1,0 +1,1 @@
+& C:/Python311/python.exe c:/Projects/TRAINING360/python-basics-reloaded/08-Fájlkezelés/lessons/text/01_read_no_with.py

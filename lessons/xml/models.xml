@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<felhasznalok>
+    <felhasznalo>
+        <nev>John Doe</nev>
+        <email>john.doe@example.com</email>
+    </felhasznalo>
+    <felhasznalo>
+        <nev>Jane Doe</nev>
+        <email>jane.doe@example.com</email>
+    </felhasznalo>
+</felhasznalok>
