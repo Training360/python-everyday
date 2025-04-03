@@ -10,10 +10,10 @@ def read_csv_file_generator(file_path, skip_first=True):
     
     f.close()
 
-# Get both header and data
-gen = read_csv_file_generator('./lessons/csv/employees-with-header.csv')
-columns = next(gen)
-print("Header:", columns)
-print("Data:")
-for row in gen:
-    print(row)
+if __name__ == "__main__":
+    gen = read_csv_file_generator('./lessons/csv/employees-with-header.csv')
+    columns = next(gen)
+    print("Header:", columns)
+    print("Data:")
+    for row in gen:
+        print(row)

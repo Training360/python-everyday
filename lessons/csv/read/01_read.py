@@ -6,4 +6,5 @@ def read_csv_file(file):
         print([row for row in reader])
 
 
-read_csv_file('./lessons/csv/employees-with-header.csv')
+if __name__ == "__main__":
+    read_csv_file('./lessons/csv/employees-with-header.csv')
