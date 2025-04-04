@@ -7,6 +7,6 @@ def read_csv_file(file):
         return  content[0] , content[1:]
 
 if __name__ == "__main__":
-    columns, data = read_csv_file('./lessons/csv/employees-with-header.csv')
+    columns, data = read_csv_file('./lessons/csv/files/employees-with-header.csv')
     print('Columns: ', columns)
     print('Data: ', data)

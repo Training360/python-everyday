@@ -1,9 +1,9 @@
 import csv
 
-def read_csv_file_generator(file_path, skip_first=True):
+def read_csv_file_generator(file_path):
     f = open(file_path, 'r')
     reader = csv.reader(f)
-    columns = next(reader, None) if skip_first else None
+    columns = next(reader, None) 
     
     yield columns
     yield from reader
@@ -11,7 +11,7 @@ def read_csv_file_generator(file_path, skip_first=True):
     f.close()
 
 if __name__ == "__main__":
-    gen = read_csv_file_generator('./lessons/csv/employees-with-header.csv')
+    gen = read_csv_file_generator('./lessons/csv/files/employees-with-header.csv')
     columns = next(gen)
     print("Header:", columns)
     print("Data:")

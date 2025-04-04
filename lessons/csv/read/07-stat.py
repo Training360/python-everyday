@@ -42,5 +42,5 @@ def calculate_statistics(file_path, column_name):
     }
 
 if __name__ == "__main__":
-    stat = calculate_statistics('./lessons/csv/employees-with-header.csv', "yearly_salary")
+    stat = calculate_statistics('./lessons/csv/files/employees-with-header.csv', "yearly_salary")
     print(stat)

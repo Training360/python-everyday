@@ -36,6 +36,6 @@ rows = [
        ]
 
 # name of csv file
-filename = "employees.csv"
+filename = "./lessons/csv/files/employees-backup-2.csv"
 
 write_csv(filename, rows)

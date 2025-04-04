@@ -23,7 +23,7 @@ def read_csv_file_generator(file_path, required_columns):
 
 if __name__ == "__main__":
     required_cols = ["yearly_salary","years_of_experience"] 
-    file_path = './lessons/csv/employees-with-header.csv'
+    file_path = './lessons/csv/files/employees-with-header.csv'
     try:
         gen = read_csv_file_generator(file_path, required_cols)
         columns = next(gen)

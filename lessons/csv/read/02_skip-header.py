@@ -10,5 +10,5 @@ def read_csv_file(file, skip_first=True):
 
 
 if __name__ == "__main__":
-    data = read_csv_file('./lessons/csv/employees-with-header.csv', False)
-    # print(data)a)
+    data = read_csv_file('./lessons/csv/files/employees-with-header.csv', False)
+    print(data)

@@ -10,7 +10,7 @@ def read_csv_file_generator(file_path):
             yield dict(zip(columns, row)) 
 
 if __name__ == "__main__":
-    gen = read_csv_file_generator('./lessons/csv/employees-with-header.csv')
+    gen = read_csv_file_generator('./lessons/files/csv/employees-with-header.csv')
     columns = next(gen)
     print("Header:", columns)
     print("Data:")

@@ -7,4 +7,4 @@ def read_csv_file(file):
 
 
 if __name__ == "__main__":
-    read_csv_file('./lessons/csv/employees-with-header.csv')
+    read_csv_file('./lessons/csv/files/employees-with-header.csv')
