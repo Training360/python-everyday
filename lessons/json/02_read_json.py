@@ -1,5 +1,4 @@
 from json import load
-from os import path
 
 
 def fetch_items(file):

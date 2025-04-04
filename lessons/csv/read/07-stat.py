@@ -24,6 +24,7 @@ def read_csv_file_generator(file_path, required_columns):
 def calculate_statistics(file_path, column_name):
     gen = read_csv_file_generator(file_path, [column_name])
     values = []
+    stat = {"min": None, "max": None, "sum": None, "avg": None,  "count": 0}
     
     for row in gen:
         try:
@@ -32,14 +33,14 @@ def calculate_statistics(file_path, column_name):
         except (ValueError, TypeError):
             continue
 
-    if not values:
-        return {"min": None, "max": None, "sum": None}
+    if len(values) > 0:
+        stat["count"] = sum(values) 
+        stat["min"] = min(values)
+        stat["max"] = max(values)
+        stat["sum"] = sum(values) 
+        stat["avg"] = stat["sum"] / stat["count"]
 
-    return {
-        "min": min(values),
-        "max": max(values),
-        "sum": sum(values),
-    }
+    return stat
 
 if __name__ == "__main__":
     stat = calculate_statistics('./lessons/csv/files/employees-with-header.csv', "yearly_salary")

@@ -10,18 +10,18 @@ def read_xml_file(file_path):
 def salary_stat(doc):
     salaries = doc.xpath('//salary')
     values = []
-    stat = { "min": None, "max": None, "sum": None, "avg": None, "count": 0 }
+    stat = {"count": 0, "min": None, "max": None, "sum": None, "avg": None,  }
     
     for salary in salaries:
         if salary.text:
             values.append(float(salary.text))
     
     if values:
+            stat["count"] = len(values)
             stat["min"] = min(values)
             stat["max"] = max(values)
             stat["sum"] = sum(values)
-            stat["avg"] = stat["sum"] / len(values)
-            stat["count"] = len(values)
+            stat["avg"] = stat["sum"] /  stat["count"]
         
     return stat 
 
