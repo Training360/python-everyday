@@ -1,12 +1,12 @@
-from lxml import etree
+import xml.etree.ElementTree as ET
 
 def read_xml_file_generator(file):
     """Generator function that yields employee records one at a time"""
     try:
-        tree = etree.parse(file)
+        tree = ET.parse(file)
         root = tree.getroot()
 
-        for employee in root.xpath('//employee'):
+        for employee in root.findall('.//employee'):
             emp_data = {}
             
             if 'id' in employee.attrib:
@@ -17,7 +17,7 @@ def read_xml_file_generator(file):
                 
             yield emp_data
             
-    except etree.XMLSyntaxError as e:
+    except ET.ParseError as e:
         print(f"Error parsing XML: {e}")
     except Exception as e:
         print(f"Error: {e}")

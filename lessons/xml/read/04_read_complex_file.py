@@ -1,4 +1,4 @@
-from lxml import etree
+import xml.etree.ElementTree as ET
 import json
 
 def process_attributes(element, result):
@@ -41,14 +41,14 @@ def xml_to_dict(element):
 
 def read_complex_xml_generator(file):
     try:
-        tree = etree.parse(file)
+        tree = ET.parse(file)
         root = tree.getroot()
         
-        for employee in root.xpath('//employee'):
+        for employee in root.findall('.//employee'):
             emp_data = xml_to_dict(employee)
             yield emp_data
             
-    except etree.XMLSyntaxError as e:
+    except ET.ParseError as e:
         print(f"Error parsing XML: {e}")
     except Exception as e:
         print(f"Error: {e}")

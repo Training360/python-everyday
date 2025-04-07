@@ -1,12 +1,12 @@
-from lxml import etree
+import xml.etree.ElementTree as ET
 
 def read_xml_file(file):
     try:
-        tree = etree.parse(file)
+        tree = ET.parse(file)
         root = tree.getroot()
         employees = []
 
-        for employee in root.xpath('//employee'):
+        for employee in root.findall('.//employee'):
             emp_data = {}
        
             for child in employee:
@@ -16,7 +16,7 @@ def read_xml_file(file):
         
         return employees
             
-    except etree.XMLSyntaxError as e:
+    except ET.ParseError as e:
         print(f"Error parsing XML: {e}")
     except Exception as e:
         print(f"Error: {e}")
