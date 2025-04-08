@@ -1,7 +1,7 @@
 from jsonmodule import fetch_items
 import json
 
-employees = fetch_items('./lessons/json/files/new_employees.json')   
+employees = fetch_items('./lessons//files/new_employees.json')   
 
 def fetch_items(file):
     json_file = open( file=file, mode='r', encoding='utf-8')

@@ -39,6 +39,6 @@ def salary_statistics(data):
     
 
 if __name__ == "__main__":
-    data = fetch_items('./lessons/json/files/employees.json')
+    data = fetch_items('./lessons//files/employees.json')
     stat = salary_statistics(data)
     print(stat)

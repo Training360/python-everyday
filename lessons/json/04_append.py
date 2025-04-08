@@ -27,7 +27,7 @@ def append_to_json(file, new_data):
 
 
 if __name__ == "__main__":
-    file = './lessons/json/files/new_employees.json'
+    file = './lessons//files/new_employees.json'
     new_employee = {
         "id": 3,
         "first_name": "Robert",

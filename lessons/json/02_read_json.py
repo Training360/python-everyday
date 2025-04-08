@@ -11,4 +11,4 @@ def fetch_items(file):
 
 
 if __name__ == "__main__":
-     print(fetch_items('./lessons/json/files/employees.json'))
+     print(fetch_items('./lessons//files/employees.json'))
