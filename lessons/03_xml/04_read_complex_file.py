@@ -7,7 +7,6 @@ def process_attributes(element, result):
     return result
 
 def process_text(element, result):
-    """Process and add text content if present"""
     text = element.text.strip() if element.text else ""
     if text and not result:
         return text
