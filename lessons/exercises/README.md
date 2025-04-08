@@ -117,7 +117,6 @@ def merge_and_remove_duplicates(json_file1, json_file2, output_file):
 merge_and_remove_duplicates('data1.json', 'data2.json', 'merged_data.json')
 ```
 
-Adott egy csv fájl felhasználók nevével és email címével. Konvertáld át json és cml formátumra is..
 
 ```python
 import csv
