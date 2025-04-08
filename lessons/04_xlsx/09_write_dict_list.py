@@ -14,8 +14,8 @@ def write_xlsx(file, rows):
     workbook.save(file)
 
 
-# Adatok sorai szótárak listájaként
-rows = [
+if __name__ == "__main__":
+    rows = [
         {
             'id': 1,
             'first_name': 'John', 
@@ -34,10 +34,8 @@ rows = [
             'yearly_salary': 90000, 
             'years_of_experience': 3
         },
-]
+    ]
 
-# XLSX fájl neve
-filename = "./lessons/files/employees-backup-2.xlsx"
+    filename = "./lessons/files/employees-backup-2.xlsx"
 
-# Írás az XLSX fájlba
-write_xlsx(filename, rows)
+    write_xlsx(filename, rows)

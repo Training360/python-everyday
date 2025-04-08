@@ -11,7 +11,7 @@ def validate_columns(file_columns, required_columns):
 def read_xlsx_file_generator(file_path, required_columns):
     workbook = openpyxl.load_workbook(file_path)
     sheet = workbook.active
-    columns = [cell.value for cell in sheet[1]]  # First row is the header
+    columns = [cell.value for cell in sheet[1]]  
     
     col_indices = validate_columns(columns, required_columns)
     
