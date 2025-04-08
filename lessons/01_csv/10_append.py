@@ -31,14 +31,6 @@ def add_id_field(file, rows):
 
 
 def append_csv(file, rows):    
-    file_exists = os.path.isfile(file)
-    
-    if not file_exists:
-        print(f"File {file} does not exist.")
-    
-    if not rows:
-        return
-
     fields, rows = add_id_field(file, rows)
 
     with open(file, 'a', newline='') as csvfile:
@@ -46,7 +38,8 @@ def append_csv(file, rows):
         csvwriter.writerows(rows)
 
 
-new_rows = [
+if __name__ == "__main__":
+    new_rows = [
         {
             'first_name': 'Robert', 
             'last_name': 'Smith', 
@@ -65,8 +58,6 @@ new_rows = [
         },
        ]
 
-filename = "./lessons//files/employees.csv"
-
-if __name__ == "__main__":
+    filename = "./lessons//files/employees.csv"
     append_csv(filename, new_rows)
     print(f"Appended {len(new_rows)} rows to {filename}")

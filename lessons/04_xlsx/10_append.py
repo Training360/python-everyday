@@ -52,8 +52,8 @@ def append_xlsx(file, rows):
 
     workbook.save(file)
 
+
 if __name__ == "__main__":
-    
     new_rows = [
             {
                 'first_name': 'Robert', 
@@ -74,7 +74,5 @@ if __name__ == "__main__":
     ]
 
     filename = "./lessons/files/employees-with-header.xlsx"
-
-    if __name__ == "__main__":
-        append_xlsx(filename, new_rows)
-        print(f"Appended {len(new_rows)} rows to {filename}")
+    append_xlsx(filename, new_rows)
+    print(f"Appended {len(new_rows)} rows to {filename}")
