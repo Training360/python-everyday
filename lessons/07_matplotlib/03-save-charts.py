@@ -51,11 +51,7 @@ plt.title("Median Salary (USD) by age")
 # plt.legend(['All devs', 'Python devs'])
 
 plt.legend()
-
 plt.grid(True)
-
 plt.tight_layout()
-
 plt.savefig('plot.svg')
-
 plt.show()

@@ -1,16 +1,18 @@
 import csv
 import numpy as np
+import pandas as pd
 from collections import Counter
 from matplotlib import pyplot as plt
-from os import path
 
 plt.style.use('seaborn-v0_8-bright')
 
-with open(path.join(path.dirname(__file__), 'survey_light.csv')) as csv_file:
-    csv_reader = csv.DictReader(csv_file)
-    language_counter = Counter()
-    for row in csv_reader:
-        language_counter.update(row['LanguageWorkedWith'].split(';'))
+data = pd.read_csv('./lessons/files//survey_light.csv')
+ids = data['Respondent']
+lang_responses = data['LanguageWorkedWith']
+language_counter = Counter()
+
+for response in lang_responses:
+    language_counter.update(str(response).split(';'))
 
 # print(language_counter)
 # print(language_counter.most_common(10))
