@@ -24,30 +24,37 @@ def prepare_data(df):
     return df
 
 
-def plot_age_income_purchase_scatter(df, save_to_path):
-    """Életkor vs jövedelem szórásdiagram a biztosításvásárlás függvényében"""
-    plt.figure(figsize=(10, 6))
+def plot_age_distribution(df, save_to_path):
+    """Életkor szerinti biztosítási eloszlás"""
+    plt.figure(figsize=(12, 6))
 
-    # Két csoport kiválasztása: vásárolt és nem vásárolt biztosítást
-    purchased = df[df["PurchasedInsurance"] == "Yes"]
-    not_purchased = df[df["PurchasedInsurance"] == "No"]
+    # Adatok csoportosítása életkor szerint
+    age_groups = df.groupby("Age")["PurchasedInsurance"].agg(
+        Total="count",  # Összes ember ebben a korban
+        Purchased=lambda x: (x == "Yes").sum(),  # Ebből hányan vásároltak biztosítást
+    )
 
-    # Szórásdiagram készítése
-    plt.scatter(
-        not_purchased["Age"],
-        not_purchased["Income"],
-        color="red",
-        alpha=0.5,
-        label="Nem vásárolt",
+    # Diagram létrehozása
+    plt.bar(
+        age_groups.index, age_groups["Total"], color="lightgray", label="Összes ügyfél"
     )
-    plt.scatter(
-        purchased["Age"], purchased["Income"], color="blue", alpha=0.5, label="Vásárolt"
+    plt.bar(
+        age_groups.index,
+        age_groups["Purchased"],
+        color="green",
+        label="Biztosítást vásárolt",
     )
-    plt.title("Biztosításvásárlás az életkor és jövedelem függvényében", fontsize=14)
-    plt.xlabel("Életkor (év)")
-    plt.ylabel("Jövedelem")
+
+    # Diagram formázása
+    plt.title("Életkor szerinti biztosítási eloszlás", fontsize=14)
+    plt.xlabel("Életkor (év)", fontsize=12)
+    plt.ylabel("Ügyfelek száma", fontsize=12)
+    plt.grid(True, alpha=0.3, axis="y")
     plt.legend()
-    plt.grid(True, alpha=0.3)
     plt.tight_layout()
+
+    # Mentés és bezárás
     plt.savefig(save_to_path)
     plt.close()
+
+    return save_to_path

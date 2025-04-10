@@ -50,12 +50,12 @@ def tranform_new_customer(new_customer, job_encoder, insurance_encoder):
     """Új ügyfél adatait átalakítja a modell bemenetéhez"""
     transformed_customer = {
         "Age": [
-            new_customer["age"],
+            new_customer["Age"],
         ],
-        "Income": [new_customer["income"]],
-        "JobType": job_encoder.transform([new_customer["job_type"]]),
+        "Income": [new_customer["Income"]],
+        "JobType": job_encoder.transform([new_customer["JobType"]]),
         "ExistingInsurance": insurance_encoder.transform(
-            [new_customer["existing_insurance"]]
+            [new_customer["ExistingInsurance"]]
         ),
     }
 
@@ -63,7 +63,8 @@ def tranform_new_customer(new_customer, job_encoder, insurance_encoder):
     return new_customer_df
 
 
-def predict_for_new_customer(model, new_customer):
+# Az első predict függvény marad ahogy van
+def predict(model, new_customer):
     """Új ügyfél biztosítási hajlandóságának előrejelzése"""
     new_customer_df = pd.DataFrame(new_customer)
     insurance_prediction = model.predict(new_customer_df)
@@ -72,11 +73,14 @@ def predict_for_new_customer(model, new_customer):
     return result
 
 
-def predict(df, new_customer):
+# A második függvényt nevezzük át megfelelőbben
+def predict_complete_pipeline(df, new_customer):
+    """Teljes előrejelzési folyamat betanításától a predikcióig"""
     X, y, job_encoder, insurance_encoder = preprocess_data(df)
     X_train, X_test, y_train, y_test = split_data(X, y)
     model = train_model(X_train, y_train)
     evaluate_model(model, X_test, y_test)
-    predict_for_new_customer(
-        model, 40, 80000, "Employee", "No", job_encoder, insurance_encoder
+    transformed_customer = tranform_new_customer(
+        new_customer, job_encoder, insurance_encoder
     )
+    return predict(model, transformed_customer)
