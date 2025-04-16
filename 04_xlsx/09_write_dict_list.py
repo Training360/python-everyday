@@ -1,5 +1,4 @@
 import openpyxl
-from os import path
 
 
 def write_xlsx(file, rows):
