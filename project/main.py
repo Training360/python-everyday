@@ -1,13 +1,14 @@
 import pandas as pd
-from mailer import connect_to_smtp, send_email
+
+# from mailer import connect_to_smtp, send_email
 from plot import plot_age_distribution
 from prediction import predict_complete_pipeline
 
 # load data
 filepath = "./files/insurance_data.csv"
 df = pd.read_csv(filepath)
+print(df)
 
-# plot
 save_to_path = "./files/insurance_data_plot.png"
 plot_age_distribution(df, save_to_path)
 
@@ -20,7 +21,7 @@ new_customer = {
 }
 
 prediction_result = predict_complete_pipeline(df, new_customer)
-
+print("RESULT", prediction_result)
 # send mail
 # sender_email = "your_email@gmail.com"
 # sender_password = "your_app_password"
